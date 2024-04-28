@@ -75,54 +75,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project2.wsgi.application'
 
+DATABASES={
 
-DATABASES = {
-    'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        'ENGINE': 'djongo',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME': 'user_auth',
-        'ENFORCE_SCHEMA': False,
+   'default':{
 
-        'CLIENT': {
+       'NAME': 'Auth',
+       'ENFORCE_SCHEMA': False ,
 
-            'host':'mongodb+srv://lobnaelnisr:1234lolo@cluster0.9evcfxw.mongodb.net/',
+       'CLIENT': {
+
+            'host':'mongodb+srv://amiranayel:96IZndvLpNJPLlIv@maindatabase.kwtfz97.mongodb.net/?retryWrites=true&w=majority&appName=MainDatabase',
 
             'port': 27017,
 
-            'username': 'lobnaelnisr',
+            'username': 'amiranayel',
 
-            'password': '1234lolo',
-
-        }
-    }
+            'password': '96IZndvLpNJPLlIv',
+            
 }
 
+  }
 
-
-
-#DATABASES={
-
-   #'default':{
-
-      # 'NAME': 'Auth',
-      # 'ENFORCE_SCHEMA': False ,
-
-      # 'CLIENT': {
-
-           # 'host':'mongodb+srv://amiranayel:96IZndvLpNJPLlIv@maindatabase.kwtfz97.mongodb.net/?retryWrites=true&w=majority&appName=MainDatabase',
-
-           # 'port': 27017,
-
-           # 'username': 'amiranayel',
-
-          #  'password': '96IZndvLpNJPLlIv',
-            
-#}
-
- # }
-
-#}
+}
 
 
 # Password validation
