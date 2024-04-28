@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'project2.wsgi.application'
 DATABASES={
 
    'default':{
-
+       'ENGINE': 'djongo',
        'NAME': 'Auth',
        'ENFORCE_SCHEMA': False ,
 
