@@ -18,6 +18,7 @@ def login(request):
     serializer = UserSerializers(instance=user)
     return Response({"token": token.key, "user": serializer.data})
 
+
 @api_view(['POST'])
 def signup(request):
     serializer = UserSerializers(data = request.data)
@@ -29,6 +30,7 @@ def signup(request):
         token = Token.objects.create(user=user)
         return Response({"token": token.key, "user": serializer.data})
     return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])
