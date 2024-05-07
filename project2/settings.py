@@ -99,32 +99,13 @@ WSGI_APPLICATION = 'project2.wsgi.application'
 #}
 
 
-
-
-DATABASES={
-
-   'default':{
-
-       'ENGINE': 'djongo',
-
-       'NAME': 'Auth',
-       'ENFORCE_SCHEMA': False ,
-
-       'CLIENT': {
-
-            'host':'mongodb+srv://amiranayel:96IZndvLpNJPLlIv@maindatabase.kwtfz97.mongodb.net/?retryWrites=true&w=majority&appName=MainDatabase',
-
-            'port': 27017,
-
-            'username': 'amiranayel',
-
-            'password': '96IZndvLpNJPLlIv',
-            
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME':'db.sqlite3',
+    }
 }
 
-  }
-
-}
 
 
 # Password validation
