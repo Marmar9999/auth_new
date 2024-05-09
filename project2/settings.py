@@ -124,11 +124,15 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = "/media/"
 
-
-
-
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#SMTP Conf: (YOU ORG REAL EMAIL TO BE USED HERE AUTO)
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_PORT ='587'  #for TLS
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER ='insightlearn7@gmail.com '   #ur email
+EMAIL_HOST_PASSWORD ='InsightLearn@78'        #ur password
 
