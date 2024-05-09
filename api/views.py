@@ -8,6 +8,21 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.shortcuts import get_object_or_404
 
+# API Overview View
+@api_view(['GET'])
+def api_overview(request):
+    """
+    Provides an overview of the available API endpoints.
+    """
+    api_urls = {
+        'to login to your account ': 'login/',
+        'to sign-up for the first time ': 'signup/',
+        'to test token validity ': 'test_token/',
+    }
+    return Response(api_urls)
+
+
+#################################################################
 
 @api_view(['POST'])
 def login(request):
@@ -41,15 +56,5 @@ def test_token(request):
 
 
 #########################################################################################
-# API Overview View
-@api_view(['GET'])
-def api_overview(request):
-    """
-    Provides an overview of the available API endpoints.
-    """
-    api_urls = {
-        'to login to your account ': 'login/',
-        'to sign-up for the first time ': 'signup/',
-        'to test token validity ': 'test_token/',
-    }
-    return Response(api_urls)
+# forget password :
+
