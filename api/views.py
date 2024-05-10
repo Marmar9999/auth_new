@@ -65,3 +65,17 @@ def test_token(request):
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class =UserListSerializers
+
+# retrieve one user:
+
+#class UserView(generics.ListAPIView):
+   # queryset = User.objects.get()
+   # serializer_class =UserListSerializers    
+
+###################################################################3
+#users online 
+#def sample_view(request):
+   # current_user = request.user
+   # return Response("users online  {}".format(current_user.id))
+    
+

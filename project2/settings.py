@@ -130,10 +130,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #SMTP Conf: (YOU ORG REAL EMAIL TO BE USED HERE AUTO)
 
-#EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST ='smtp-mail.outlook.com'
-#EMAIL_PORT ='587'  #for TLS
-#EMAIL_USE_TLS = True
-#EMAIL_HOST_USER ='3202110287@alexu.edu.eg'     #ur email
-#EMAIL_HOST_PASSWORD ='j*Hp_q7-<-j&g_2'         #ur password
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_PORT ='587'                                     #for TLS
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER ='ahmedeid2504@gmail.com'             #ur email
+EMAIL_HOST_PASSWORD ='rpsz xokc pfsk aghw'         #ur password
 
