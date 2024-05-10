@@ -15,3 +15,7 @@ Content-Type: application/json
 Authorization: Token 6ecd1d74ae22c112524290744fcc0e395a581254
 
 {}
+
+###########
+GET http://127.0.0.1:8000/users/
+Content-Type: application/json
