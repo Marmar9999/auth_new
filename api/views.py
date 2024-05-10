@@ -56,9 +56,6 @@ def test_token(request):
     return Response("passed for {}".format(request.user.email))   #request is passed for the email of user whose token was just provided 
 
 
-#########################################################################################
-# forget password :
-
 ###################################
 # retrieve users:
 
