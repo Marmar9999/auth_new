@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
-from .serializers import UserSerializers
+from .serializers import UserSerializers, UserListSerializers
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework import status, generics
@@ -61,6 +61,7 @@ def test_token(request):
 
 ###################################
 # retrieve users:
+
 class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
-    serializer_class =UserSerializers
+    serializer_class =UserListSerializers
