@@ -9,9 +9,9 @@ SECRET_KEY = 'django-insecure-lwd7pzt&(6*6^l8lmwoz6fdcrznsf959hzo%6*-4wuxltu4(0^
 
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = os.environ.get("DEBUG", "False").lower() == "True"
+DEBUG = 'True'
 
-
+#os.environ.get("DEBUG", "False").lower() == "True"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(" ")
 
 
@@ -129,10 +129,11 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #SMTP Conf: (YOU ORG REAL EMAIL TO BE USED HERE AUTO)
-EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST ='smtp.gmail.com'
-EMAIL_PORT ='587'  #for TLS
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER ='insightlearn7@gmail.com '   #ur email
-EMAIL_HOST_PASSWORD ='InsightLearn@78'        #ur password
+
+#EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST ='smtp-mail.outlook.com'
+#EMAIL_PORT ='587'  #for TLS
+#EMAIL_USE_TLS = True
+#EMAIL_HOST_USER ='3202110287@alexu.edu.eg'     #ur email
+#EMAIL_HOST_PASSWORD ='j*Hp_q7-<-j&g_2'         #ur password
 
