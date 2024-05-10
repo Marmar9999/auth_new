@@ -4,9 +4,10 @@ from rest_framework.authentication import SessionAuthentication, TokenAuthentica
 from .serializers import UserSerializers
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.authtoken.models import Token
 from django.shortcuts import get_object_or_404
+
 
 # API Overview View
 @api_view(['GET'])
@@ -58,3 +59,8 @@ def test_token(request):
 #########################################################################################
 # forget password :
 
+###################################
+# retrieve users:
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class =UserSerializers
