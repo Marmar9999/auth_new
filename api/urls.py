@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 from . import views
-from .views import api_overview, UserListView, UserOnlineView, MyPasswordResetCompleteView, external_link_view
+from .views import api_overview, UserListView, UserOnlineView, MyPasswordResetCompleteView, external_link_view, change_password
 
 from django.contrib.auth import views as auth_views    #
 #from rest_framework.routers import DefaultRouter
@@ -14,7 +14,9 @@ urlpatterns = [
     path('', api_overview, name='api_overview'),
     re_path('login/', views.login),
     re_path('signup/', views.signup),
+    path('change_password/', change_password, name='change_password'),
     re_path('test_token/', views.test_token),
+    re_path('add_user/', views.addUser),     #to add users manually
     re_path('users/', UserListView.as_view(), name='user-list'),
     re_path('usersOnline/', UserOnlineView.as_view()),
     #re_path('user/<int:pk>/', UserView.as_view(), name='user'),

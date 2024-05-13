@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
-from .serializers import UserSerializers, UserListSerializers, UserActivitySerializer
+from .serializers import UserSerializers, UserListSerializers,UserPasswordSerializers, UserActivitySerializer
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework import status, generics
@@ -13,8 +13,7 @@ from django.contrib.auth.views import PasswordResetCompleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import redirect
-
-
+from django.contrib.auth import authenticate
 
 
 #online users:
@@ -69,6 +68,21 @@ def signup(request):
     return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
 
 
+# add user manually :
+
+@api_view(['POST'])
+def addUser(request):
+    serializer = UserSerializers(data = request.data)
+    if serializer.is_valid():
+        serializer.save()
+        user = User.objects.get(email = request.data['email'])
+        user.set_password(request.data['password']) #to make sure password is hashed
+        user.save()
+        token = Token.objects.create(user=user)
+        return Response({"user": serializer.data})
+    return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+
+
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])
 @permission_classes([IsAuthenticated])
@@ -77,7 +91,23 @@ def test_token(request):
     return Response("passed for {}".format(request.user.email))   #request is passed for the email of user whose token was just provided 
 
 
-###################################
+#change password 
+@api_view(['POST'])
+def change_password(request):
+    user = get_object_or_404(User, email = request.data['email'])
+    if not user.check_password(request.data['password']):
+        return Response({"details": "Invalid credentials"}, status = status.HTTP_401_UNAUTHORIZED)
+
+    if 'new_password' not in request.data:
+        return Response({"details": "New password is required"}, status=status.HTTP_400_BAD_REQUEST)
+    
+    serializer = UserPasswordSerializers(instance=user)
+    user.set_password(request.data['new_password'])
+    user.save()
+    token, created = Token.objects.get_or_create(user=user)
+    return Response({"token": token.key, "user": serializer.data})
+
+
 # retrieve users:
 
 class UserListView(generics.ListAPIView):
