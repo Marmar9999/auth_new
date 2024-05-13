@@ -10,7 +10,9 @@ from django.shortcuts import get_object_or_404
 from .models import activity
 from rest_framework import viewsets
 from django.contrib.auth.views import PasswordResetCompleteView
-from django.http import JsonResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.shortcuts import redirect
 
 
 
@@ -89,7 +91,10 @@ class UserOnlineView(generics.ListAPIView):
     serializer_class = UserListSerializers  
     
 ###################################################################3
-
+def external_link_view(request):
+  # Redirect user to the login website
+  external_url = 'https://insightlearn.vercel.app/login'
+  return redirect(external_url)
 
 class MyPasswordResetCompleteView(PasswordResetCompleteView):
     def get_context_data(self, **kwargs):
@@ -98,5 +103,7 @@ class MyPasswordResetCompleteView(PasswordResetCompleteView):
         return context
 
     def render_to_response(self, context):
-        return JsonResponse(context['message'],safe=False)
-    
+        external_link = reverse('external-link-url')  # Use reverse function for named URL
+        response = HttpResponseRedirect(external_link)
+        return response
+

@@ -1,9 +1,9 @@
 from django.urls import path, re_path
 from . import views
-from .views import api_overview, UserListView, UserOnlineView, MyPasswordResetCompleteView
+from .views import api_overview, UserListView, UserOnlineView, MyPasswordResetCompleteView, external_link_view
 
 from django.contrib.auth import views as auth_views    #
-from rest_framework.routers import DefaultRouter
+#from rest_framework.routers import DefaultRouter
 
 #router = DefaultRouter()
 
@@ -19,6 +19,7 @@ urlpatterns = [
     re_path('usersOnline/', UserOnlineView.as_view()),
     #re_path('user/<int:pk>/', UserView.as_view(), name='user'),
     #re_path('who/', views.sample_view),
+    path('external-link/', external_link_view, name='external-link-url'),
 
     # forget password :
     path('reset_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),
