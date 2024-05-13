@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 from . import views
-from .views import api_overview, UserListView, UserActivityViewSet, UserOnlineView
+from .views import api_overview, UserListView, UserOnlineView, MyPasswordResetCompleteView
 
 from django.contrib.auth import views as auth_views    #
 from rest_framework.routers import DefaultRouter
@@ -24,7 +24,7 @@ urlpatterns = [
     path('reset_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
-    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
+    path('accounts/reset/done/', MyPasswordResetCompleteView.as_view(), name="password_reset_complete"),
 
 
 ]
