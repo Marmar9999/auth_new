@@ -6,13 +6,13 @@ from .models import activity
 class UserSerializers(serializers.ModelSerializer):
     class Meta(object):
         model = User
-        fields = ['id','username', 'email','password', 'is_active','is_staff']
+        fields = ['id','username', 'email','password', 'is_active']
 
 
 class UserListSerializers(serializers.ModelSerializer):
     class Meta(object):
         model = User
-        fields = ['id', 'username', 'email', 'is_active','is_staff']    
+        fields = ['id', 'username', 'email', 'is_active']    
             
 
 class UserActivitySerializer(serializers.ModelSerializer):
@@ -21,4 +21,3 @@ class UserActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = activity
         fields = ['id', 'username', 'action', 'timestamp']
-        

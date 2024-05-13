@@ -9,6 +9,7 @@ from rest_framework.authtoken.models import Token
 from django.shortcuts import get_object_or_404
 from .models import activity
 from rest_framework import viewsets
+from django.http import JsonResponse
 
 
 
@@ -17,6 +18,7 @@ from rest_framework import viewsets
 class UserActivityViewSet(viewsets.ModelViewSet):
     queryset = activity.objects.all().order_by('-timestamp')  # Order by most recent
     serializer_class = UserActivitySerializer  
+    
     def get_queryset(self):
         queryset = super().get_queryset()
         # You can filter by specific user or timeframe here
@@ -78,16 +80,10 @@ class UserListView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class =UserListSerializers
 
-# retrieve one user:
+# retrieve active user:
 
-#class UserView(generics.ListAPIView):
-   # queryset = User.objects.get()
-   # serializer_class =UserListSerializers    
-
-###################################################################3
-#users online 
-#def sample_view(request):
-   # current_user = request.user
-   # return Response("users online  {}".format(current_user.id))
+class UserOnlineView(generics.ListAPIView):
+    queryset = User.objects.filter(is_active=True)  # Filter by active users
+    serializer_class = UserListSerializers  
     
-
+###################################################################3
