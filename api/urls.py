@@ -4,11 +4,10 @@ from .views import api_overview, UserListView, UserActivityViewSet, UserOnlineVi
 
 from django.contrib.auth import views as auth_views    #
 from rest_framework.routers import DefaultRouter
-from .views import active_users
 
-router = DefaultRouter()
+#router = DefaultRouter()
 
-router.register('user-activity', UserActivityViewSet, basename='user-activity')
+#router.register('user-activity', UserActivityViewSet, basename='user-activity')
 
 urlpatterns = [
     # API Overview
@@ -20,7 +19,6 @@ urlpatterns = [
     re_path('usersOnline/', UserOnlineView.as_view()),
     #re_path('user/<int:pk>/', UserView.as_view(), name='user'),
     #re_path('who/', views.sample_view),
-    path('active-users/', active_users, name='active_users'),
 
     # forget password :
     path('reset_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),
@@ -31,4 +29,4 @@ urlpatterns = [
 
 ]
 
-urlpatterns += router.urls
+#urlpatterns += router.urls

@@ -15,14 +15,14 @@ from django.http import JsonResponse
 
 #online users:
 
-class UserActivityViewSet(viewsets.ModelViewSet):
-    queryset = activity.objects.all().order_by('-timestamp')  # Order by most recent
-    serializer_class = UserActivitySerializer  
+#class UserActivityViewSet(viewsets.ModelViewSet):
+ #   queryset = activity.objects.all().order_by('-timestamp')  # Order by most recent
+ #   serializer_class = UserActivitySerializer  
     
-    def get_queryset(self):
-        queryset = super().get_queryset()
+ #   def get_queryset(self):
+  #      queryset = super().get_queryset()
         # You can filter by specific user or timeframe here
-        return queryset
+   #     return queryset
 
 
 
