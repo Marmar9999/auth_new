@@ -1,12 +1,27 @@
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
-from .serializers import UserSerializers, UserListSerializers
+from .serializers import UserSerializers, UserListSerializers, UserActivitySerializer
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from rest_framework import status, generics
 from rest_framework.authtoken.models import Token
 from django.shortcuts import get_object_or_404
+from .models import activity
+from rest_framework import viewsets
+
+
+
+#online users:
+
+class UserActivityViewSet(viewsets.ModelViewSet):
+    queryset = activity.objects.all().order_by('-timestamp')  # Order by most recent
+    serializer_class = UserActivitySerializer  
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        # You can filter by specific user or timeframe here
+        return queryset
+
 
 
 # API Overview View
