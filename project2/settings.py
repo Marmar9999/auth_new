@@ -83,6 +83,21 @@ DATABASES = {
     }
 }
 
+#DATABASES = {
+#   'default': {
+
+      #  'ENGINE': 'mysql.connector.django',
+
+      #  'NAME': 'AmiraDB',
+      #  'USER': 'testuser',
+      #  'PASSWORD': '302569',
+      #  'HOST': '127.0.0.1',
+      #  'PORT': '3307',
+#    }
+#
+#}
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
