@@ -13,7 +13,6 @@ from django.contrib.auth.views import PasswordResetCompleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import redirect
-from django.contrib.auth import authenticate
 
 
 #online users:
@@ -28,7 +27,6 @@ from django.contrib.auth import authenticate
    #     return queryset
 
 
-
 # API Overview View
 @api_view(['GET'])
 def api_overview(request):
@@ -39,6 +37,8 @@ def api_overview(request):
         'to login to your account ': 'login/',
         'to sign-up for the first time ': 'signup/',
         'to test token validity ': 'test_token/',
+        'to to change you password ': 'change_password/',
+        'if you have forgot you password ': 'reset_password/',
     }
     return Response(api_urls)
 
@@ -106,6 +106,17 @@ def change_password(request):
     user.save()
     token, created = Token.objects.get_or_create(user=user)
     return Response({"token": token.key, "user": serializer.data})
+
+
+# suspend users:
+
+@api_view(['POST'])
+def suspend_users(request):
+    user = get_object_or_404(User, email = request.data['email'])
+    serializer = UserListSerializers(instance=user)
+    user.is_active = request.data['is_active']
+    user.save()
+    return Response({"user": serializer.data})
 
 
 # retrieve users:

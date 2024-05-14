@@ -29,3 +29,8 @@ class UserActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = activity
         fields = ['id', 'username', 'action', 'timestamp']
+
+class UserSuspensionSerializers(serializers.ModelSerializer):
+    class Meta(object):
+        model = User
+        fields = ['id', 'email', 'is_active']          
