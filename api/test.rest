@@ -1,7 +1,7 @@
 POST http://127.0.0.1:8000/login/
 Content-Type: application/json
 
-{ "email": "yoo@gmail.com", "password": "123" }
+{ "email": "amiranayel978@gmail.com", "password": "ll665066" }
 #### 
 #######
 POST http://127.0.0.1:8000/signup/
@@ -38,8 +38,11 @@ Content-Type: application/json
 
 {"email": "ahmed@gmail.com", "is_active": "False" }
 ###########
-#GET http://127.0.0.1:8000/user-activity/
-#Content-Type: application/json
+POST http://127.0.0.1:8000/logout/
+Content-Type: application/json
+Authorization: Token 53cbbaad5a9dc82d0a92eeed0cde02c7a7003eb1
+
+{}
 ##################
 
 GET http://127.0.0.1:8000/accounts/reset/done/

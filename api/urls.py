@@ -20,9 +20,8 @@ urlpatterns = [
     path('suspend_users/',views.suspend_users),  #to change user status
     re_path('users/', UserListView.as_view(), name='user-list'),
     re_path('usersOnline/', UserOnlineView.as_view()),
-    #re_path('user/<int:pk>/', UserView.as_view(), name='user'),
     path('external-link/', external_link_view, name='external-link-url'),
-
+    re_path('logout/', views.logout_user),
     # forget password :
     path('reset_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),

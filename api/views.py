@@ -13,18 +13,8 @@ from django.contrib.auth.views import PasswordResetCompleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import redirect
+from django.contrib.auth import logout
 
-
-#online users:
-
-#class UserActivityViewSet(viewsets.ModelViewSet):
- #   queryset = activity.objects.all().order_by('-timestamp')  # Order by most recent
- #   serializer_class = UserActivitySerializer  
-    
- #   def get_queryset(self):
-  #      queryset = super().get_queryset()
-        # You can filter by specific user or timeframe here
-   #     return queryset
 
 
 # API Overview View
@@ -144,7 +134,18 @@ class MyPasswordResetCompleteView(PasswordResetCompleteView):
         return context
 
     def render_to_response(self, context):
-        external_link = reverse('external-link-url')  # Use reverse function for named URL
+        external_link = reverse('external-link-url')
         response = HttpResponseRedirect(external_link)
         return response
+
+##################
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+@authentication_classes([TokenAuthentication])
+def logout_user(request):
+    logout(request)
+    return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
+
+###############
 
