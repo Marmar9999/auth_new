@@ -7,13 +7,14 @@ from django.contrib.auth.models import User
 from rest_framework import status, generics
 from rest_framework.authtoken.models import Token
 from django.shortcuts import get_object_or_404
-from .models import activity
-from rest_framework import viewsets
+from .models import UserActivity
 from django.contrib.auth.views import PasswordResetCompleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth import logout
+from django.utils import timezone
+
 
 
 
@@ -21,7 +22,7 @@ from django.contrib.auth import logout
 @api_view(['GET'])
 def api_overview(request):
     """
-    Provides an overview of the available API endpoints.
+    overview of the available API endpoints.
     """
     api_urls = {
         'to login to your account ': 'login/',
@@ -42,6 +43,7 @@ def login(request):
         return Response({"details": "wrong password"}, status = status.HTTP_404_NOT_FOUND)
     token, created = Token.objects.get_or_create(user=user)
     serializer = UserSerializers(instance=user)
+    UserActivity.objects.create(user=user, action='login')   #update user logs
     return Response({"token": token.key, "user": serializer.data})
 
 
@@ -148,4 +150,3 @@ def logout_user(request):
     return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
 
 ###############
-

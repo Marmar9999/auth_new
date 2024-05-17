@@ -1,13 +1,13 @@
 POST http://127.0.0.1:8000/login/
 Content-Type: application/json
 
-{ "email": "amiranayel978@gmail.com", "password": "ll665066" }
+{ "email": "hoo@gmail.com", "password": "ll665066" }
 #### 
 #######
 POST http://127.0.0.1:8000/signup/
 Content-Type: application/json
 
-{"username":"nayel", "email": "amiranayel978@gmail.com", "password": "ll665066" }
+{"username":"hoo", "email": "hoo@gmail.com", "password": "ll665066" }
 
 ######
 POST http://127.0.0.1:8000/change_password/
@@ -18,7 +18,7 @@ Content-Type: application/json
 ####
 GET http://127.0.0.1:8000/test_token
 Content-Type: application/json
-Authorization: Token 53cbbaad5a9dc82d0a92eeed0cde02c7a7003eb1
+Authorization: Token e4d1f16896422760479ecfad10713523ad8ccb3e
                     
 
 {}
@@ -27,7 +27,7 @@ Authorization: Token 53cbbaad5a9dc82d0a92eeed0cde02c7a7003eb1
 POST http://127.0.0.1:8000/add_user/
 Content-Type: application/json
 
-{"username":"ahmed", "email": "ahmed@gmail.com", "password": "ll665066" }
+{"username":"test", "email": "testt@gmail.com", "password": "ll665066" }
 ###########
 GET http://127.0.0.1:8000/users/
 Content-Type: application/json
@@ -40,7 +40,7 @@ Content-Type: application/json
 ###########
 POST http://127.0.0.1:8000/logout/
 Content-Type: application/json
-Authorization: Token 53cbbaad5a9dc82d0a92eeed0cde02c7a7003eb1
+Authorization: Token e4d1f16896422760479ecfad10713523ad8ccb3e
 
 {}
 ##################

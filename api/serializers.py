@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import activity
+from .models import UserActivity
 
 
 class UserSerializers(serializers.ModelSerializer):
@@ -23,14 +23,14 @@ class UserListSerializers(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'is_active']    
             
 
-class UserActivitySerializer(serializers.ModelSerializer):
-    username = serializers.CharField(source='user.username', read_only=True) 
-
-    class Meta:
-        model = activity
-        fields = ['id', 'username', 'action', 'timestamp']
-
 class UserSuspensionSerializers(serializers.ModelSerializer):
     class Meta(object):
         model = User
         fields = ['id', 'email', 'is_active']          
+
+class UserActivitySerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True) 
+
+    class Meta:
+        model = UserActivity
+        fields = ['id', 'email', 'action', 'timestamp']
