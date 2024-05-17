@@ -43,7 +43,6 @@ def login(request):
         return Response({"details": "wrong password"}, status = status.HTTP_404_NOT_FOUND)
     token, created = Token.objects.get_or_create(user=user)
     serializer = UserSerializers(instance=user)
-    UserActivity.objects.create(user=user, action='login')   #update user logs
     return Response({"token": token.key, "user": serializer.data})
 
 
@@ -123,7 +122,9 @@ class UserOnlineView(generics.ListAPIView):
     queryset = User.objects.filter(is_active=True)  # Filter by active users
     serializer_class = UserListSerializers  
     
-###################################################################3
+
+# redirect to insight learn :
+
 def external_link_view(request):
   # Redirect user to the login website
     external_url = 'https://insightlearn.vercel.app/login'
@@ -141,6 +142,7 @@ class MyPasswordResetCompleteView(PasswordResetCompleteView):
         return response
 
 ##################
+#log-out:
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
